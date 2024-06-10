@@ -11,3 +11,17 @@ function scrollToSectionNav(event) {
   document.querySelectorAll("[data-section]").forEach((link) => {
     link.addEventListener("click", scrollToSectionNav);
   });
+
+
+let currentIndex = 0;
+
+const images = document.querySelectorAll('.carousel-images img');
+const totalImages = images.length;
+
+function showNextImage() {
+    currentIndex = (currentIndex + 1) % totalImages;
+    const newTransform = `translateX(-${currentIndex * 100}%)`;
+    document.querySelector('.carousel-images').style.transform = newTransform;
+}
+
+setInterval(showNextImage, 3000);
